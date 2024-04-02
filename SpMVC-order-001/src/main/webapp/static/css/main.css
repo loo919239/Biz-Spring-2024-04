@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+header.main {
+  color: white;
+  background-color: blueviolet;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  background-color: #777;
+  color: blue;
+
+  ul {
+    list-style: none;
+    li {
+      font-weight: bold;
+    }
+  }
+}
