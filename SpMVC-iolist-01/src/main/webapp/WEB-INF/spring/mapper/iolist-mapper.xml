@@ -5,19 +5,39 @@
 
 <mapper namespace="com.callor.iolist.persistance.IolistDao">
 
-	<insert id="insert"></insert>
+	<insert id="insert" parameterType="iolistVO">
+		insert INTO tbl_iolist (
+			io_seq,
+			io_date,
+			io_time,
+			io_input,
+			io_pname,
+			io_price,
+			io_quan,
+			io_total
+		)VALUE (
+			#{io_seq},
+			#{io_date},
+			#{io_time},
+			#{io_input},
+			#{io_pname},
+			#{io_price},
+			#{io_quan},
+			#{io_total}
+		)
+	</insert>
 	<update id="update"></update>
 	<delete id="delete"></delete>
 	<select id="create_iolist_table">
 		CREATE TABLE IF NOT EXISTS tbl_iolist (
-			io_seq		BIGINT		PRIMARY KEY AUTO_INCREMENT,
-			io_date		VARCHAR(10)	NOT NULL	,
-			io_time		VARCHAR(10)	NOT NULL	,
-			io_input	VARCHAR(1)	NOT NULL	,	
-			io_pname	VARCHAR(30)	NOT NULL	,	
-			io_price	INT	NOT NULL	,
-			io_quan		INT	NOT NULL	,
-			io_total	INT		
+		io_seq BIGINT PRIMARY KEY AUTO_INCREMENT,
+		io_date VARCHAR(10) NOT NULL ,
+		io_time VARCHAR(10) NOT NULL ,
+		io_input VARCHAR(1) NOT NULL ,
+		io_pname VARCHAR(30) NOT NULL ,
+		io_price INT NOT NULL ,
+		io_quan INT NOT NULL ,
+		io_total INT
 		)
 	</select>
 </mapper> 
