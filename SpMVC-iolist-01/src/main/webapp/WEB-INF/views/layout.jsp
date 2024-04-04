@@ -9,8 +9,14 @@
   	<c:if test="${BODY == 'IOLIST_HOME' }">
   		<%@ include file="/WEB-INF/views/iolist/home.jsp" %>
   	</c:if>
-  	  	<c:if test="${BODY == 'IOLIST_INPUT' }">
+  	<c:if test="${BODY == 'IOLIST_INPUT' }">
   		<%@ include file="/WEB-INF/views/iolist/input.jsp" %>
+  	</c:if>
+  	<c:if test="${BODY == 'IOLIST_DETAIL' }">
+  		<%@ include file="/WEB-INF/views/iolist/detail.jsp" %>
+  	</c:if>
+  	<c:if test="${BODY == 'USER_LOGIN' }">
+  		<%@ include file="/WEB-INF/views/user/login.jsp" %>
   	</c:if>
   	
   </section>

@@ -28,8 +28,9 @@ a {
 	color: inherit;
 }
 </style>
-<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-02-008">
-<link rel="stylesheet" href="${rootPath}/static/css/iolist.css?2024-04-03-009">
+<link rel="stylesheet" href="${rootPath}/static/css/main.css?2024-04-04-001">
+<link rel="stylesheet" href="${rootPath}/static/css/iolist.css?2024-04-04-001">
+<link rel="stylesheet" href="${rootPath}/static/css/login.css?2024-04-04-001">
 <script >
 /*
  Spring View 에서 (JSP) 사용하는 EL(Expression Lang)
@@ -37,5 +38,6 @@ a {
  */
 const rootPath = "${rootPath}"
 </script>
-<script src="${rootPath}/static/js/main.js?2024-04-03-002"></script>
+<script src="${rootPath}/static/js/main.js?2024-04-04-001"></script>
+<script src="${rootPath}/static/js/iolist.js?2024-04-04-004"></script>
 </head>
