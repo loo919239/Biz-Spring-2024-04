@@ -1,3 +1,0 @@
--- userDB
-
-CREATE DATABASE userDB;

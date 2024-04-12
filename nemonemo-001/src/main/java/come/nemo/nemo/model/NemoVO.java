@@ -24,5 +24,9 @@ public class NemoVO {
         this.rowHints = new int[size][];
         this.colHints = new int[size][];
     }
+    // 추가: size를 인자로 받아 크기가 size인 게임 보드를 생성하는 메서드
+    public static NemoVO createBoardOfSize(int size) {
+        return new NemoVO(size);
+    }
 
 }
