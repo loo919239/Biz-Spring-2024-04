@@ -14,10 +14,13 @@
   <body>
     <h1>회원가입 및 로그인 구현</h1>
     <f:form class="join">
-    	<div><input placeholder="USERNAME" name="u_name"/></div>
-    	<div><input placeholder="PASSWORD" name="u_password"/></div>
+    	<div><input placeholder="USERNAME" name="username"/></div>
+    	<div><input placeholder="PASSWORD" name="password"/></div>
     	<div><input placeholder="RE PASSWORD" name="re_password"/></div>
+    	<div><input placeholder="EMAIL" name="email"/></div>
+    	
     	<div><button type="button" >회원가입</button></div>
+    	<a href="${rootPath}/user/login">로그인</a>
     	
     </f:form>
   </body>

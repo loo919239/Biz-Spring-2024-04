@@ -4,8 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
  <mapper namespace="com.nemo.nemo.dao.NemoDao">
- 
- 	<select id="selectAll"></select>
+ 	
+ 	
+ 	<select id="selectAll" resultType="com.nemo.nemo.model.NemoVO">	
+ 	SELECT * FROM tbl_nemo_lv1
+ 	</select>
  	<select id="findById"></select>
  	<insert id="insert"></insert>
  	<update id="update"></update>

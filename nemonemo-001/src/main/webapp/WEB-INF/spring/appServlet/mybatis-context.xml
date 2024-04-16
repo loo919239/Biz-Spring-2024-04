@@ -14,7 +14,7 @@
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
 		<property name="username" value="root"/>
 		<property name="password" value="!Biz8080"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/userdb"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/nemodb"/>
 	</bean>
 	
 	<bean id="sessionFactry" class="org.mybatis.spring.SqlSessionFactoryBean">
