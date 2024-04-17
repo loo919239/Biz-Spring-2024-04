@@ -18,4 +18,6 @@ public interface UserService {
 	 *  @since 2024-04-15
 	 */
 	public UserVO createUser (UserVO createUserVO);
+
+	public UserVO findById(String username);
 }

@@ -8,7 +8,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Insert title here</title>
-    <script src="${rootPath}/static/js/user.js?2024-04-15-002">
+    <script src="${rootPath}/static/js/user.js?2024-04-17-001">
     </script>
   </head>
   <body>
