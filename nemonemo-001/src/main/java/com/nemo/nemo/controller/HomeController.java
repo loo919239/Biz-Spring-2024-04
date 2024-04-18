@@ -1,5 +1,6 @@
 package com.nemo.nemo.controller;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -9,49 +10,72 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.nemo.nemo.dao.NemoDao;
 import com.nemo.nemo.model.NemoVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
-	
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
-//		
-//		return "home";
-//	}
-
-
-
-    // 노노그램 데이터베이스에서 데이터를 가져온다고 가정
+  
     private final NemoDao nemoDao;
-    public HomeController(NemoDao nemoDao) {
-    	this.nemoDao = nemoDao;
-	}
     
-
+    public HomeController(NemoDao nemoDao) {
+        this.nemoDao = nemoDao;
+    }
+    
     @GetMapping("/")
-    public String showNonogram(Model model, NemoVO nemoVO) {
-        // 데이터베이스에서 노노그램 데이터를 가져옴
+    public String showNonogram(Model model) {
         List<NemoVO> vo = nemoDao.selectAll();
         
-        // JSP에 데이터 전달
-        model.addAttribute("VO", vo);
+        for(NemoVO row : vo) {
+            StringBuilder hintsBuilder = new StringBuilder();
+            int count = 0;
+            for (int i = 1; i <= 5; i++) {
+                try {
+                    Field field = row.getClass().getDeclaredField("lv1_block" + i);
+                    field.setAccessible(true);
+                    int blockValue = field.getInt(row);
+                    if (blockValue == 1) {
+                        count++;
+                    } else {
+                        if (count > 0) {
+                            hintsBuilder.append(count).append(" ");
+                            count = 0;
+                        }
+                    }
+                } catch (NoSuchFieldException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (count > 0) {
+                hintsBuilder.append(count);
+            }
+            row.setHints(hintsBuilder.toString().trim());
+        }
         
-        // JSP 파일 이름 반환
+        model.addAttribute("rows", vo);
+      
         return "nonogram";
     }
-	
-	
+    
+    // �� ���� ���� ��Ʈ�� ����ϴ� �޼���
+    private String calculateHints(NemoVO row) {
+        StringBuilder hints = new StringBuilder();
+        int consecutiveOnes = 0;
+        for (int i = 1; i <= 5; i++) {
+            try {
+                Field field = row.getClass().getDeclaredField("lv1_block" + i);
+                field.setAccessible(true);
+                int block = field.getInt(row);
+                if (block == 1) {
+                    consecutiveOnes++;
+                } else if (consecutiveOnes > 0) {
+                    hints.append(consecutiveOnes).append(", ");
+                    consecutiveOnes = 0;
+                }
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        if (consecutiveOnes > 0) {
+            hints.append(consecutiveOnes);
+        }
+        return hints.toString();
+    }
 }
