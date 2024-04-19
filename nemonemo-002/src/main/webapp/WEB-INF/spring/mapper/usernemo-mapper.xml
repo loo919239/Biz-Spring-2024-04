@@ -3,13 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
- <mapper namespace="com.nemo.nemo.dao.NemoDao">
+ <mapper namespace="com.nemo.nemo.dao.UserNemoDao">
  	
- 	<select id="selectByNNum" resultType="com.nemo.nemo.model.NemoVO">
-    SELECT * FROM tbl_nemo WHERE n_num = #{nNum}
-	</select>
- 	<select id="selectAll" resultType="com.nemo.nemo.model.NemoVO">	
- 	SELECT * FROM tbl_nemo
+ 	<select id="selectAll" resultType="com.nemo.nemo.model.UserNemoVO">	
+ 	SELECT * FROM tbl_nemo_play
  	</select>
  	<select id="findById"></select>
  	<insert id="insert"></insert>

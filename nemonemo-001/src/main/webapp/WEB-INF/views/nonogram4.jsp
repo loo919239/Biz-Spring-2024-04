@@ -50,6 +50,10 @@
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block5}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block6}"></td>
                 <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block7}"></td>
+                <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block8}"></td>
+                <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block9}"></td>
+                <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block10}"></td>
+                <td class="cell" onclick="toggleColor(event, this)" oncontextmenu="toggleBlue(event, this)" data-value="${row.n_block11}"></td>
             </tr>
         </c:forEach>
     </table>
@@ -74,9 +78,9 @@
             }
 
             // 클리어 판단
-            if (clickedCells.length === 7) {
+           /*  if (clickedCells.length === 7) {
                 clearGame();
-            }
+            } */
         }
 
         // 우클릭으로 파란색으로 변경하는 함수

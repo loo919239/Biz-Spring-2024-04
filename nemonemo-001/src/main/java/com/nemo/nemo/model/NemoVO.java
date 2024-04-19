@@ -15,15 +15,24 @@ import lombok.ToString;
 @Builder
 public class NemoVO {
 	
-	   
 	    private Long id;
-	    private int lv1_num;
-	    private int lv1_row_num;
-	    private int lv1_block1;
-	    private int lv1_block2;
-	    private int lv1_block3;
-	    private int lv1_block4;
-	    private int lv1_block5;
+	    private int n_num;
+	    private int n_row_num;
+	    private int n_block1;
+	    private int n_block2;
+	    private int n_block3;
+	    private int n_block4;
+	    private int n_block5;
+	    private int n_block6;
+	    private int n_block7;
+	    private int n_block8;
+	    private int n_block9;
+	    private int n_block10;
+	    private int n_block11;
+	    private int n_block12;
+	    private int n_block13;
+	    private int n_block14;
+	    private int n_block15;
 	    private String hints;
 	    
 	    public void setHints(String hints) {

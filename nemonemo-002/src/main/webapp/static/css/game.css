@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.main-column-hint {
+  display: flex;
+  margin-left: 10%;
+  justify-content: center;
+  width: 50%;
+  gap: 3rem;
+}
+
+form.HM-game_board {
+  display: flex;
+}
+.HM-game-input_box {
+  text-align: center;
+  width: 50%;
+}
+.main-row-hint {
+  text-align: right;
+  width: 10%;
+}
