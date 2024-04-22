@@ -46,6 +46,11 @@
             font-size: 20px; /* 리스트 아이템의 글자 크기를 조절합니다. */
         }
     </style>
+    <script>
+    function toggleColor(event, element) {
+        // 여기에 toggleColor 함수의 동작을 정의합니다.
+    }
+</script>
 </head>
 <body>
     <table>

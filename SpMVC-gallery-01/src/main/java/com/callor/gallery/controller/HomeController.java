@@ -21,4 +21,10 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/bbs", method = RequestMethod.GET)
+	public String home() {
+		return null;
+	}
+	
+	
 }
