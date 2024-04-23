@@ -27,8 +27,6 @@
 - `LongText` : 최대 4GByte 크기의 문자열까지 허용, 4 * 20의 30승 개의 문자열
 
 
-
-
 ## Tiles 를 이용한 Layout 설정
 ```xml
 <!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-core -->

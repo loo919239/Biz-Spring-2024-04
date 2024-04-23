@@ -1,4 +1,4 @@
-package com.callor.gallery.controller;
+package com.callor.gallery;
 
 import java.util.List;
 
@@ -10,31 +10,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.callor.gallery.dao.GalleryDao;
 import com.callor.gallery.models.GalleryVO;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
-public class HomeController {
+@RequestMapping(value = "/gallery")
+public class GalleryController {
 	
-	private final GalleryDao galleryDao;	
-	public HomeController(GalleryDao galleryDao) {
+	private final GalleryDao galleryDao;
+	
+	
+	public GalleryController(GalleryDao galleryDao) {
+		super();
 		this.galleryDao = galleryDao;
 	}
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+
+
+	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public String home(Model model) {
 		List<GalleryVO> gList = galleryDao.selectAll();
 		model.addAttribute("GALLERYS", gList);
-		return "home";
+		return "gallery/list";
+		
 	}
-	
-	@RequestMapping(value = "/bbs", method = RequestMethod.GET)
-	public String home() {
-		return null;
-	}
-	
-	
+
 }

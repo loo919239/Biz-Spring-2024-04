@@ -1,6 +1,7 @@
-package com.callor.gallery.controller;
+package com.callor.gallery;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,25 +17,23 @@ import com.callor.gallery.models.GalleryVO;
 @Controller
 public class HomeController {
 	
-	private final GalleryDao galleryDao;	
+	private final GalleryDao galleryDao;
+	
+	
 	public HomeController(GalleryDao galleryDao) {
 		this.galleryDao = galleryDao;
 	}
+	
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Locale locale, Model model) {
+		model.addAttribute("NAME","³ª´Â ÀÌ¸ù·æ ÀÔ´Ï´Ù.");
 		List<GalleryVO> gList = galleryDao.selectAll();
-		model.addAttribute("GALLERYS", gList);
+		model.addAttribute("GALLERYS",gList);
 		return "home";
 	}
-	
-	@RequestMapping(value = "/bbs", method = RequestMethod.GET)
-	public String home() {
-		return null;
-	}
-	
 	
 }
