@@ -17,7 +17,7 @@
     ></script>
     <section class="gallery">
       <article class="gallery">
-        <form>
+        <form method="POST" enctype="multipart/form-data">
           <fieldset>
             <legend>이미지 업로드</legend>
             <div><input type="text" placeholder="제목" /></div>
@@ -27,7 +27,14 @@
                 name="g_content"
               ></textarea>
             </div>
-            <div><input type="file" class="file" /></div>
+            <div>
+              <input
+                type="file"
+                class="file"
+                name="image_file"
+                accept="image/*"
+              />
+            </div>
             <div><input type="hidden" name="g_image" /></div>
             <div class="image">
               <img

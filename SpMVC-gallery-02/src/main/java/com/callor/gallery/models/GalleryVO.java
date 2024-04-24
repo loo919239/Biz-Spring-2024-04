@@ -21,7 +21,10 @@ public class GalleryVO {
 	private String g_author;	//VARCHAR(20)
 	private String g_subject;	//VARCHAR(20)
 	private String g_content;	//VARCHAR(100)
-	private String g_image;		//LONGTEXT
-
+	private String g_image;
+	private String g_origin_image;		//LONGTEXT
+	private String g_up_image;
+	
+	
 
 }
