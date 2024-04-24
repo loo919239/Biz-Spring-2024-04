@@ -1,4 +1,4 @@
-package com.callor.gallery;
+package com.callor.gallery.controller;
 
 import java.util.List;
 
@@ -29,6 +29,10 @@ public class GalleryController {
 		model.addAttribute("GALLERYS", gList);
 		return "gallery/list";
 		
+	}
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public String insert() {
+		return "gallery/input";
 	}
 
 }
