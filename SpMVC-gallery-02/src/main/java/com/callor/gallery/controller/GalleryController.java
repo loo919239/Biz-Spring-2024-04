@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.callor.gallery.dao.GalleryDao;
 import com.callor.gallery.models.GalleryVO;
+import com.callor.gallery.service.FileUploadService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,15 +21,14 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping(value = "/gallery")
 public class GalleryController {
 	
+	private final FileUploadService fileUploadService; 
 	private final GalleryDao galleryDao;
 	
-	
-	public GalleryController(GalleryDao galleryDao) {
+	public GalleryController(FileUploadService fileUploadService, GalleryDao galleryDao) {
 		super();
+		this.fileUploadService = fileUploadService;
 		this.galleryDao = galleryDao;
 	}
-
-
 	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public String home(Model model) {
 		List<GalleryVO> gList = galleryDao.selectAll();
@@ -45,8 +45,16 @@ public class GalleryController {
 	 * 파일을 수신하는 객체
 	 */
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insert(GalleryVO galleryVO, @RequestParam("image_file") MultipartFile image_file) {
+	public String insert(GalleryVO galleryVO, @RequestParam("image_file") MultipartFile image_file, Model model) {
 		log.debug("파일 업로드 {}", image_file.getOriginalFilename());
+		try {
+			fileUploadService.fileUpload(image_file);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("IMAGE",image_file.getOriginalFilename());
 		return "gallery/input";
 	}
 
