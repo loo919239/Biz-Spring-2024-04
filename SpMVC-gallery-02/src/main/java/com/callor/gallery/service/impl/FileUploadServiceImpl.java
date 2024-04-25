@@ -1,7 +1,9 @@
 package com.callor.gallery.service.impl;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
@@ -24,13 +26,16 @@ public class FileUploadServiceImpl implements FileUploadService{
 	public FileUploadServiceImpl(ServletContext context) {
 		super();
 		this.context = context;
+		
+		// tomcat 폴더가 아닌 Server 의 로컬 스토리지의 임의의 폴더
 		folder = "/app/upload";
 	}
 
 	@Override
 	public String fileUpload(MultipartFile file) throws Exception {
 		
-		if(file.getOriginalFilename().isEmpty()) {
+		String originalFileName = file.getOriginalFilename();
+		if(originalFileName.isEmpty()) {
 			return null;
 		}
 		/*
@@ -55,21 +60,35 @@ public class FileUploadServiceImpl implements FileUploadService{
 		if(!path.exists()) {
 			path.mkdirs();
 		}
+		/*
+		 * 같은 이름의 파일을 업로드하여 기존에 업로드된 파일을 변형하는 공격을
+		 * 막기 위하여 파일이름 앞에 UUID 를 부착하여 저장되는 파일의 이름을 변경한다
+		 */
+		String uuid = UUID.randomUUID().toString();
+		String upLoadFileName = String.format("%s-%s",uuid,originalFileName);
 		
 		// 폴더 이름 +파일이름 을 결합하여 업로드할 파일 정보를 생성하여
 		// uploadFile 객체를 저장
-		File upLoadFile = new File(folder, file.getOriginalFilename());
+		File upLoadFile = new File(folder, upLoadFileName);
 		
 		// file 을 uploadFile 정보로 복사하라
 		// 업로드를 실행하라
 		file.transferTo(upLoadFile);		
-		return null;
+		
+		// 실제 저장된 파일의 이름을 return
+		return upLoadFileName;
 	}
-
+	
 	@Override
-	public List<String> filesUpload(MultipartHttpServletRequest File) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> filesUpload(MultipartHttpServletRequest files) throws Exception {
+		// 업로드된 멀티파일을 List type 의 Mul
+		List<MultipartFile> result = files.getFiles("image_files");
+		List<String> resultFileName = new ArrayList<String>();
+		for (MultipartFile f : result) {
+			String resName = this.fileUpload(f);
+			resultFileName.add(resName);
+		}
+		return resultFileName;
 	}
 	
 }
