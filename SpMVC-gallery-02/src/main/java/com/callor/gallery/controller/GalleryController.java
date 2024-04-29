@@ -67,7 +67,6 @@ public class GalleryController {
 			if (image_files.getFiles("image_files").size() > 0) {
 				List<GalleryVO> VOs = galleryService.createGallery(galleryVO, image_files);
 			}
-			resultVO = galleryService.createGallery(galleryVO, image_file);
 			model.addAttribute("GALLERY", resultVO);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
