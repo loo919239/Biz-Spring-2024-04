@@ -38,4 +38,20 @@
 ## 도구 설치
 - fileUpload 를 위한 dependency 설정
 ``` xml
+<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.5</version>
+</dependency>
+```
+-`commons-fileupload` 를 dependency 에 설정 후 `Maven dependencys` 를 확인하여 `commons-io` 항목이 없으면 
+```xml
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.16.1</version>
+</dependency>
+
 ```

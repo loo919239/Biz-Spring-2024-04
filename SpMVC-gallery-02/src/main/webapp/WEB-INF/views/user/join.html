@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html
   lang="ko"
-  xmlns="http://www.thymeleaf.org"
+  xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://ultraq.net.nx/thymeleaf/layout"
   layout:decorate="~{/home}"
 >
   <section layout:fragment="content">
-    <h1>회원가입</h1>
+    <link
+      rel="stylesheet"
+      href="../../../static/css/user.css"
+      th:href="@{/static/css/user.css}"
+    />
+    <form method="post" class="user join" th:action>
+      <fieldset>
+        <legend>회원가입</legend>
+
+        <div><input type="text" placeholder="USERNAME" name="username"/></div>
+        <div><input type="text" placeholder="PASSWORD" name="password"/></div>
+        <div><input type="text" placeholder="PASSWORD 확인" /></div>
+        <div><input type="text" placeholder="EMAIL" name="email"/></div>
+        <div><input type="text" placeholder="TEL" name="tel"/></div>
+        <div><input type="submit" value="회원가입" /></div>
+      </form>
+    </fieldset>
   </section>
 </html>

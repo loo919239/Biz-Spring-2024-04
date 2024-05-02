@@ -54,6 +54,7 @@ p_block14 INT,
 p_block15 INT,
 PRIMARY KEY (p_id, p_num, p_row_num)
 );
+
 -- 클리어정보
 CREATE TABLE tbl_clear (
 c_id	VARCHAR(20)	,
@@ -61,6 +62,8 @@ c_level	INT	,
 c_clear	INT	,
 		primary key (c_id, c_level)
 );
+
+INSERT INTO tbl_clear (c_id , c_level, c_clear) VALUE ('caller', '1','1');
 
 INSERT INTO tbl_nemo (n_num, n_row_num, n_block1, n_block2, n_block3, n_block4, n_block5, n_block6, n_block7, n_block8, n_block9, n_block10, n_block11, n_block12, n_block13, n_block14, n_block15)
 VALUES
@@ -114,30 +117,15 @@ VALUES
 
 
 DROP TABLE tbl_speech;
--- 대화정보 (test)
+-- 대화정보
+
 CREATE TABLE tbl_speech (
-s_num	INT		PRIMARY KEY,
-s_a1	VARCHAR(100)		,
-s_b1	VARCHAR(100)		,
-s_a2	VARCHAR(100)		,
-s_b2	VARCHAR(100)		
-);
-
-INSERT INTO tbl_speech (s_num, s_a1, s_b1, s_a2, s_b2) VALUES
-(1, '나 지난 주말에 수족관에 다녀왔어!', '그래? 재밌었겠다!', '응 정말 즐거운 경험이었어!', NULL),
-(2, '거기서 뭘 봤는데?', '흰동가리를 봤어!', '그게 어떤 물고기인데?', '오렌지빛에 희고 검은 줄무늬가 있는 작고 귀여운 물고기였어!'),
-(3, '알록달록한 조명이 켜진 수조에 수많은 해파리가 있었어!', '정말 예뻤겠다!', '응! 가운데에 클로버같은 무늬를 가진 반투명한 해파리들이었어!', NULL),
-(4, '난 돌고래가 좋던데. 돌고래는 없었어?', '벨루가 라고 하는 흰 돌고래가 있는 수조가 있었어. 어둡지만 햇빛이 드는 커다란 수조에서 혼자 춤추듯이 헤엄을 쳤어!', NULL , NULL),
-(5, '또 뭘 봤는데?', '그리고... 아주 커다란 문어가 있었어!! 커다란 다리에 빨판들이 있어서 으스스했지..', NULL, NULL);
-
-DROP TABLE tbl_speech2;
-CREATE TABLE tbl_speech2 (
 s_num	INT	            ,
 s_speaker	VARCHAR(1)		,
 s_message	VARCHAR(100)		
 );
 
-INSERT INTO tbl_speech2 (s_num, s_speaker, s_message) VALUES
+INSERT INTO tbl_speech (s_num, s_speaker, s_message) VALUES
 (1, 'A', '나 지난 주말에 수족관에 다녀왔어!'),
 (1, 'B', '그래? 재밌었겠다!'),
 (1, 'A', '응 정말 즐거운 경험이었어!'),

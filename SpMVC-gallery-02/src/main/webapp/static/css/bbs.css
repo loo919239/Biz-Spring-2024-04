@@ -1,13 +1,19 @@
 section.bbs-layout {
   display: flex;
   .bbs-left-side {
-    margin: 10px;
     border: 1px solid blue;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    a {
+      margin: 12px 20px;
+      padding: 5px;
+    }
   }
   .bbs-right-side {
-    margin: 10px;
     border: 1px solid blue;
+    margin: 10px;
     flex: 3;
   }
 }

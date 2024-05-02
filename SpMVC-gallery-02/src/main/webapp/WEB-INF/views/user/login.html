@@ -6,6 +6,10 @@
   layout:decorate="~{/home}"
 >
   <section layout:fragment="content">
-    <h1>로그인</h1>
+    <form th:action method="post">
+      <div><input type="text" placeholder="USERNAME" /></div>
+      <div><input type="text" placeholder="PASSWORD" /></div>
+      <div><input type="submit" value="로그인" /></div>
+    </form>
   </section>
 </html>

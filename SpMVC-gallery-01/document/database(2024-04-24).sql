@@ -16,3 +16,5 @@ g_up_image	VARCHAR(255)	NOT NULL
 );
 
 DESC TABLE tbl_gallery;
+
+
