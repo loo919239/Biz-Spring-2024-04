@@ -42,8 +42,9 @@ public class HomeController {
 		return "layout";
 	}
 	
+	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-	public String insert(InsertVO galleryVO, @RequestParam("image_file") MultipartFile image_file,
+	public String insert(InsertVO insertVO, @RequestParam("image_file") MultipartFile image_file,
 			MultipartHttpServletRequest image_files, Model model) {
 		log.debug("파일 업로드 {}", image_file.getOriginalFilename());
 
@@ -51,53 +52,24 @@ public class HomeController {
 		InsertVO resultVO = null;
 		try {
 			if (!singleFileName.isEmpty()) {
-				resultVO = insertService.createGallery(galleryVO, image_file);
+				resultVO = insertService.createGallery(insertVO, image_file);
 			}
 			/*
 			 * Multi files 의 경우는 매개변수의 이름과 form 에서 전달한 이름은 전혀 연관이 없다. Multi 파일의 경우는
 			 * 변수.getFiles() method 를 실행할때 form 에서 설정한 name 속성값을 매개변수로 전달한다.
 			 */
-			if (image_files.getFiles("image_files").size() > 0) {
-				List<InsertVO> VOs = insertService.createGallery(galleryVO, image_files);
+			if (image_files.getFiles("image_files").size() > 1) {
+				List<InsertVO> VOs = insertService.createGallery(insertVO, image_files);
 			}
 			model.addAttribute("GALLERY", resultVO);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		model.addAttribute("IMAGE", image_file.getOriginalFilename());
+		
 		model.addAttribute("BODY","INSERT");
 		return "layout";
 	}
-	
-//	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-//	public String insert(InsertVO insertVO, @RequestParam("image_file") MultipartFile image_file,
-//			MultipartHttpServletRequest image_files, Model model) {
-//		log.debug("파일 업로드 {}", image_file.getOriginalFilename());
-//
-//		String singleFileName = image_file.getOriginalFilename();
-//		InsertVO resultVO = null;
-//		try {
-//			if (!singleFileName.isEmpty()) {
-//				resultVO = insertService.createGallery(insertVO, image_file);
-//			}
-//			/*
-//			 * Multi files 의 경우는 매개변수의 이름과 form 에서 전달한 이름은 전혀 연관이 없다. Multi 파일의 경우는
-//			 * 변수.getFiles() method 를 실행할때 form 에서 설정한 name 속성값을 매개변수로 전달한다.
-//			 */
-//			if (image_files.getFiles("image_files").size() > 0) {
-//				List<InsertVO> VOs = insertService.createGallery(insertVO, image_files);
-//			}
-//			model.addAttribute("GALLERY", resultVO);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		model.addAttribute("IMAGE", image_file.getOriginalFilename());
-//		
-//		model.addAttribute("BODY","INSERT");
-//		return "layout";
-//	}
 	
 }

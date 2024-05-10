@@ -56,15 +56,17 @@ public class GalleryController {
 
 		String singleFileName = image_file.getOriginalFilename();
 		GalleryVO resultVO = null;
+		List<MultipartFile> fileList = image_files.getFiles("image_file");
+		MultipartFile desiredFile = fileList.get(0);
 		try {
 			if (!singleFileName.isEmpty()) {
-				resultVO = galleryService.createGallery(galleryVO, image_file);
+				resultVO = galleryService.createGallery(galleryVO, desiredFile);
 			}
 			/*
 			 * Multi files 의 경우는 매개변수의 이름과 form 에서 전달한 이름은 전혀 연관이 없다. Multi 파일의 경우는
 			 * 변수.getFiles() method 를 실행할때 form 에서 설정한 name 속성값을 매개변수로 전달한다.
 			 */
-			if (image_files.getFiles("image_files").size() > 0) {
+			if (image_files.getFiles("image_files").size() > 1) {
 				List<GalleryVO> VOs = galleryService.createGallery(galleryVO, image_files);
 			}
 			model.addAttribute("GALLERY", resultVO);
