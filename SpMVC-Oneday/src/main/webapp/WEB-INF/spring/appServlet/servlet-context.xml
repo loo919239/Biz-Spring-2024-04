@@ -12,21 +12,12 @@
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
-	<!--
-	mybatis-context.xml 이 root 영역에 설정되어
-	appServlest 영역에 transaction 이 전파가 안되는 현상이 있다
-	이때는 servlet-context.xml 에 tx:annotation-driven 을 설정하고
-	proxy-target-class="true" 로 설정한다.
-	 -->
 	<tx:annotation-driven proxy-target-class="true"/>
-	
+
 	<!-- Handles HTTP GET requests for /static/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<mvc:resources mapping="/static/**" location="/static/" />
-	<!-- view 화면에서 참조할 /upload/ 라는 path를
-	실제 로컬스토리지 /app/upload/ 라는 폴더와 연결하라
-	-->
+	
 	<mvc:resources mapping="/upload/**" location="file:///app/upload/" />
-
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -34,8 +25,7 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="10"/>
 	</bean>
-	
-	<context:component-scan base-package="com.callor.gallery.controller" />
-	<context:component-scan base-package="com.callor.gallery.service.impl" />
+	<context:component-scan base-package="com.callor.hello.controller" />
+	<context:component-scan base-package="com.callor.hello.service.impl" />
 </beans>
 

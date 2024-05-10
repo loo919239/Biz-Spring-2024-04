@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.callor.hello.dao.ImagesDao">
+ 
+ 	<select id="selectAll">
+	 	SELECT * FROM tbl_images
+ 	</select>
+
+ 	<select id="findById"></select>
+ 	
+ 	<insert id="inserts">
+ 		INSERT INTO tbl_Images (
+		img_id, img_gid, img_org_img, img_up_img
+		) VALUES
+		<foreach collection="images" item="VO" separator=", ">
+			(#{VO.img_id}, #{i_id},
+			#{VO.img_org_img}, #{VO.img_up_img} )
+		</foreach>
+ 	</insert>
+ 	
+ 	<update id="update"></update>
+ 	<delete id="delete"></delete>
+	
+	<select id="create_table">
+		CREATE TABLE IF NOT EXISTS tbl_images (
+			img_id	VARCHAR(125)		PRIMARY KEY		,		
+			img_gid	VARCHAR(125)		NOT NULL	,
+			img_org_img	VARCHAR(255)	NOT NULL	,				
+			img_up_img	VARCHAR(255)	NOT NULL	,
+				CONSTRAINT FK_GALLERY
+				FOREIGN KEY (img_id)
+				REFERENCES tbl_insert(i_id) ON DELETE CASCADE
+		)
+	</select>
+	
+</mapper> 

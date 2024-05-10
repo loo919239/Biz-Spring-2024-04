@@ -8,6 +8,8 @@ m_pw	VARCHAR(125)	NOT NULL	,
 m_nick	VARCHAR(20)		
 );
 
+SELECT * FROM tbl_members;
+
 -- 5x5 정답테이블
 CREATE TABLE tbl_nemo (
 n_num INT,
@@ -121,6 +123,7 @@ DROP TABLE tbl_speech;
 
 CREATE TABLE tbl_speech (
 s_num	INT	            ,
+s_speechnum	INT	            ,
 s_speaker	VARCHAR(1)		,
 s_message	VARCHAR(100)		
 );
@@ -143,7 +146,7 @@ INSERT INTO tbl_speech (s_num, s_speaker, s_message) VALUES
 (5, 'A', '그리고... 아주 커다란 문어가 있었어!!'),
 (5, 'A', '커다란 다리에 빨판들이 있어서 으스스했지..');
 
-
+SELECT * FROM tbl_speech;
 
 DROP TABLE tbl_speech;
 

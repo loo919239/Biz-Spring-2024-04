@@ -19,7 +19,11 @@ import com.callor.gallery.dao.RoleDao;
 import com.callor.gallery.dao.UserDao;
 import com.callor.gallery.models.RoleVO;
 import com.callor.gallery.models.UserVO;
+import com.mysql.cj.log.Log;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service("authProviderImpl")
 public class AuthProviderImpl implements AuthenticationProvider{
 	
@@ -39,6 +43,7 @@ public class AuthProviderImpl implements AuthenticationProvider{
 		
 		String username = authentication.getName();
 		String password = authentication.getCredentials().toString();
+		log.debug("USERNAME {} PASSWORD {}", username, password);
 		
 		if(username == null || username.isBlank()) {
 			throw new UsernameNotFoundException("사용자이름을 입력하세요");

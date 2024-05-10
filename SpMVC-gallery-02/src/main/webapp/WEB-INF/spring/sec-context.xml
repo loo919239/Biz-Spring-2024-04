@@ -19,7 +19,7 @@
 		<sec:intercept-url pattern="/user/mypage" access="isAuthenticated()"/>
 		<sec:intercept-url pattern="/**" access="permitAll()"/>
 		
-		<sec:form-login login-page="/user/login" login-processing-url="/user/login" username-parameter="username" password-parameter="password"/>
+		<sec:form-login login-page="/user/login" login-processing-url="/user/login" username-parameter="username" password-parameter="password" authentication-failure-url="/user/login/fail"/>
 		<sec:logout invalidate-session="true" logout-success-url="/" logout-url="/user/logout"/>
 	</sec:http>
 	

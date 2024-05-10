@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.callor.hello.dao.InsertDao">
+ 
+ 	<select id="selectAll">
+ 	SELECT * FROM tbl_insert ORDER BY i_date DESC,
+		i_time DESC
+ 	</select>
+ 	
+ 	<select id="findById"></select>
+ 	
+ 	<insert id="insert" parameterType="InsertVO">
+	 	<selectKey resultType="String" keyProperty="i_id"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO tbl_insert (
+			i_id,
+			i_date,
+			i_time,
+			i_title,
+			i_email,
+			i_pass,
+			i_org_image,
+			i_up_image
+		) VALUES (
+			#{i_id},
+			#{i_date},
+			#{i_time},
+			#{i_title},
+			#{i_email},
+			#{i_pass},
+			#{i_org_image},
+			#{i_up_image}
+		) 	
+ 	</insert>
+ 	
+ 	<update id="update"></update>
+ 	<delete id="delete"></delete>
+ 	<select id="create_table">
+		CREATE TABLE IF NOT EXISTS tbl_insert (
+			i_id	VARCHAR(125)		PRIMARY KEY	,
+			i_date	VARCHAR(10)			NOT NULL	,
+			i_time	VARCHAR(10)			NOT NULL	,
+			i_title	VARCHAR(20)			NOT NULL	,
+			i_email	VARCHAR(50)			NOT NULL	,
+			i_pass	VARCHAR(20)			NOT NULL	,
+			i_org_image	VARCHAR(255)	NOT NULL	,		
+			i_up_image	VARCHAR(255)	NOT NULL	
+		)
+	</select>
+ </mapper> 

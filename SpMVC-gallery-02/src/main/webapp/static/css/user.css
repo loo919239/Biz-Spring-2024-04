@@ -11,7 +11,7 @@ form.user {
     width: 90%;
     margin: 5px auto;
     input {
-      width: 90%;
+      width: 100%;
       margin: 0 auto;
       padding: 8px;
       border: 1px solid #ddd;
@@ -25,4 +25,14 @@ form.user {
       }
     }
   }
+}
+
+div.error {
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  text-align: center;
 }
