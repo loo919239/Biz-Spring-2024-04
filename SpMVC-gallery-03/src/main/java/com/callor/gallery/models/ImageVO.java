@@ -1,0 +1,22 @@
+package com.callor.gallery.models;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Setter
+@Getter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class ImageVO {
+	private String i_id;
+	private int i_seq;
+	private String i_gid;
+	private String i_orgin_image;
+	private String i_up_image;
+}
