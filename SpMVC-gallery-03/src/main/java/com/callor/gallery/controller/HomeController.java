@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.gallery.dao.GalleryDao;
 import com.callor.gallery.models.GalleryVO;
+import com.callor.gallery.service.GalleryService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,14 +24,16 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class HomeController {
 
+	private final GalleryService galleryService;
 	private final GalleryDao galleryDao;
-
-	public HomeController(GalleryDao galleryDao) {
+	public HomeController(GalleryService galleryService, GalleryDao galleryDao) {
 		super();
+		this.galleryService = galleryService;
 		this.galleryDao = galleryDao;
 		this.galleryDao.create_table();
-		;
 	}
+
+
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
@@ -56,5 +59,5 @@ public class HomeController {
 		
 		return "redirect:/";
 	}
-
+	
 }
